@@ -1,0 +1,34 @@
+{
+  "name": "envscan",
+  "version": "1.0.0",
+  "description": "scans the env file",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run build & npm run build-test",
+    "types": "tsc --noEmit",
+    "start": "node build/index.js",
+    "build": "tsc",
+    "lint": "eslint --fix \"./lib/**/*.{ts,json}\"",
+    "format": "prettier --write \"./lib/**/*.{ts,json,css,scss,md}\"",
+    "test": "ts-node \"./__tests__/main.ts\"",
+    "build-test": "tsc \"./__tests__/main.ts\" --outDir build/tests",
+    "test": "node --inspect build/tests/__tests__/main.js",
+    "test-node": "node --inspect-brk build/tests/__tests__/main.js",
+    "clean": "rm -rvf build node_modules"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "@types/node": "^18.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.19.0",
+    "jest": "^29.0.2",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
+  }
+}
