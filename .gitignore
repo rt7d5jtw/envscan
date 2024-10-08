@@ -1,4 +1,3 @@
-build/
 package-lock.json
 
 ### Node ###
@@ -14,19 +13,5 @@ lerna-debug.log*
 node_modules/
 jspm_packages/
 
-# TypeScript v1 declaration files
-typings/
-
-# Optional eslint cache
-.eslintcache
-
 # Optional npm cache directory
 .npm
-
-# TypeScript cache
-*.tsbuildinfo
-
-# dotenv environment variables file
-.env
-.env.test
-.env*.local
