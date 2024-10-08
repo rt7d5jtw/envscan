@@ -4,15 +4,14 @@
   "description": "scans the env file",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run build & npm run build-test",
+    "build": "tsc & npm run build-test",
     "types": "tsc --noEmit",
     "start": "node build/index.js",
-    "build": "tsc",
     "lint": "eslint --fix \"./lib/**/*.{ts,json}\"",
     "format": "prettier --write \"./lib/**/*.{ts,json,css,scss,md}\"",
-    "test": "ts-node \"./__tests__/main.ts\"",
     "build-test": "tsc \"./__tests__/main.ts\" --outDir build/tests",
-    "test": "node --inspect build/tests/__tests__/main.js",
+    "test": "ts-node \"./__tests__/main.ts\"",
+    "test-inspect": "node --inspect build/tests/__tests__/main.js",
     "test-node": "node --inspect-brk build/tests/__tests__/main.js",
     "clean": "rm -rvf build node_modules"
   },

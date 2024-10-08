@@ -1,10 +1,7 @@
-import { readFileSync } from "fs";
-import { resolve } from "path";
-
 // SPEC:
 // https://hexdocs.pm/dotenvy/dotenv-file-format.html
 
-interface Tokenizer {
+interface EnvScanner {
   readonly source: string;
   cursor: number;
   line: number;
@@ -13,7 +10,7 @@ interface Tokenizer {
   tokenize: () => Map<string, string>;
 }
 
-class TokenizerImpl implements Tokenizer {
+class EnvScannerImpl implements EnvScanner {
   public readonly source: string;
   public cursor: number;
   public line: number;
@@ -26,7 +23,6 @@ class TokenizerImpl implements Tokenizer {
     this.tokens = new Map();
   }
 
-  // alternative method for tokenizing
   public tokenize(): Map<string, string> {
     while (!this.isEOF()) {
       switch (this.peek()) {
@@ -190,10 +186,11 @@ class TokenizerImpl implements Tokenizer {
    * Checks if character is alphabetic
    */
   private isAlphabetic(c: string): boolean {
-    if (c == undefined)
+    if (c == undefined) {
       throw new Error(
         `[ERROR] [Tokenizer.isAlphabetic()] Input was undefined!`
-      );
+      )
+    }
 
     return (c >= "a" && c <= "z") || (c >= "A" && c <= "Z") || c == "_";
   }
@@ -206,28 +203,6 @@ class TokenizerImpl implements Tokenizer {
   }
 }
 
-/**
- * Synchronously reads the file through {readFileSync}
- * Returns the file contents of the resolved file.
- * For example: filePath = .env
- * @param {string} filePath
- * @return Buffer
- */
-function loadFile(filePath: string): string {
-  let buffer;
-  try {
-    // Assumes utf-8
-    const resolvedFilePath: string = resolve(process.cwd(), filePath);
-    buffer = readFileSync(resolvedFilePath, {
-      encoding: "utf-8",
-      flag: "r",
-    });
-  } catch (err) {
-    console.warn(`Failed to load the ${filePath}:`, err);
-    return '';
-  }
-
-  return buffer;
-}
-
-export { TokenizerImpl, loadFile };
+export {
+  EnvScannerImpl
+};

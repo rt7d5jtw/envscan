@@ -1,9 +1,9 @@
 # Development settings
 # This will override the USER variable in the environment
-USER=cheesecake
+USER=testuser
 DOMAIN=example.org
 ADMIN_EMAIL=admin@${DOMAIN}
 ROOT_URL=${DOMAIN}/app
 # If this variable is not included in the file nor environment, it will be included as a it is (string)
-TOOT_URL=${MOO}/cache
+SOME_URL=${SOMEVARIABLE}/cache
 TEST_URL=${USER}/data
