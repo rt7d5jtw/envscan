@@ -74,7 +74,7 @@ nodeTest.test('Test .env parsing', function (t) {
     envCfg.get('DB_PORT') === '5432' &&
     envCfg.get('JWT_SECRET') === 'supersecretpassword' &&
     envCfg.get('JWT_EXPIRATION') === '3600' &&
-    envCfg.get('PRIVATE_KEY') === "-----BEGIN OPENSSH PRIVATE KEY-----\nb3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABBdLafISr\nvL1Jk6fp/R5N0+AAAAEAAAAAEAAAAzAAAAC3NzaC1lZDI1NTE5AAAAIPmZPz6g1wdYCIoe\njRUzSHINV7xpmN5eAPccc1QJQXdgAAAAoPIrSTZJSW/11jQENi2GmnlpQdf0uqLkOcWE4K\nWpD2MM4f+tHb2Hu3VWGDIUdIMnRCSh1BoJJCfsLCzNKlw2tuUNrNk6Uz/bODLNiy06uv6x\nccC+cBg/lmlGANCSVJ0rAXGW/BfPe1+q0UtOXZlKRq0cZBd53VsXjh32k9h/LIwiRLpNLl\naWQ45WqgvQcQ7JpoH8EZ8Wk9a47/SSw4TH1uQ=\n-----END OPENSSH PRIVATE KEY-----" &&
+    envCfg.get('PRIVATE_KEY') === "-----BEGIN RSA PRIVATE KEY-----\nMIICXAIBAAKBgQCeJzObNCgZcwSizyClJUc/tn+lHxBm/9sg2wwSTHfspteV2Xel\nHSjhdiMUUAtGeTExFdKXcolD55AQa6WpHmQ8v0uQMchvBSa+R19tQ1PSlYDgSjQm\n2+y/1N7agABjl8teDuIXhlALN7g98bvXkOakC6/io2ZEh/5ddxAEyiGvkQIDAQAB\nAoGBAJjmTX4/boUsLc85cNY4tClkxwNchP8PXUrme0U1qLuikcrN9F4tUtim3kNF\nH6GCiYxrDK5ejVaZCS7W49IdD8ofPtLJTqxk8vsgTiEofRDQ8XPK6Wlu2Z/jLF8x\n1+x/HzBD90cHMoPVlqCjhND37UFapK5+KMVPR9gWHVjjVgABAkEA8qdbO5nDIR8f\naBJyZ0BoSoN97knOTvFGpENNByiylVY8dr/tZZu8jH81BAMrIp7E53H16IfihYut\n7tmt8vaEYQJBAKbaDJbjNLuQSG06GOS+4nqPd1G2as/xlmxKmw4VHL8tke/kk6MO\nxI0estfZTUjLAHech72ef4U9Qgd6rLAw+TECQC9YLfnUB3mH7AXPS5kPvQmE3GZI\n6kMG2oSkSPwzmZx/pe55hiVEHKbBDyQIRjtMBRkvaA6FrNHnrfkjacg1ByECQHD8\n3+Gd4qvRPPqaiRj+GqgcVxTCjvpaAx86Nl4G9fyQg28MPt4AtiFKVJnO0YMl1R8q\npNFHb9tubDRcYmy9/UECQHghjs/zKqufzat431lWcc8CDsctUXwOa6oPKosHHkIZ\ndSJ0hIBru+ERKenEpZPaawW+O70R9GlvMDciL0vEvGA=\n-----END RSA PRIVATE KEY-----" &&
     envCfg.get('PORT') === '8080' &&
     envCfg.get('MODE') === 'development'
   )
