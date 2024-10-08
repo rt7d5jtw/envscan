@@ -4,30 +4,21 @@
   "description": "scans the env file",
   "main": "index.js",
   "scripts": {
-    "build": "tsc & npm run build-test",
-    "types": "tsc --noEmit",
-    "start": "node build/index.js",
-    "lint": "eslint --fix \"./lib/**/*.{ts,json}\"",
-    "format": "prettier --write \"./lib/**/*.{ts,json,css,scss,md}\"",
-    "build-test": "tsc \"./__tests__/main.ts\" --outDir build/tests",
-    "test": "ts-node \"./__tests__/main.ts\"",
-    "test-inspect": "node --inspect build/tests/__tests__/main.js",
-    "test-node": "node --inspect-brk build/tests/__tests__/main.js",
-    "clean": "rm -rvf build node_modules"
+    "test": "node tests/main.mjs",
+    "test-inspect": "node --inspect tests/main.mjs",
+    "test-node": "node --inspect-brk tests/main.mjs",
+    "lint": "eslint --fix \"./lib/**/*.{mjs,ts,json}\"",
+    "format": "prettier --write \"./lib/**/*.{mjs,ts,json,css,scss,md}\"",
+    "clean": "rm -rvf node_modules",
+    "tags": "ctags -R --exclude=.git --exclude='node_modules' --languages=JavaScript -f tags .",
+    "jshint": "jshint --config .jshintrc lib",
+    "escheck": "es-check"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^29.0.0",
-    "@types/node": "^18.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
-    "dotenv": "^16.3.1",
-    "eslint": "^8.19.0",
-    "jest": "^29.0.2",
-    "prettier": "^2.7.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.7.4"
+    "es-check": "7.1.1",
+    "jshint": "2.13.6"
   }
 }
