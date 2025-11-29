@@ -1,9 +1,24 @@
+# EnvParser: Environment File Parser (ES3 Compliant)
+
 ### About
 
-Scans through environment variable file and saves it into a [Map](https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map-objects).
+EnvParser is a utility designed to **parse environment variable (`.env`) files**. It reads key-value pairs and stores them in a standard **JavaScript Object**.
 
-Also handles variable expansion like admin@${SOMEVAR}.org for values.
+The parser includes support for:
 
-### How to test
+* Handling **comments** (`#` or `;`) and whitespace.
+* **Variable expansion** (interpolation) using the `${VAR}` syntax, prioritizing variables defined within the file over the host system's environment variables.
+* Parsing **multiline string values** (e.g., for RSA keys) enclosed in double quotes (`"`).
 
-`npm run test` or `node tests/main.mjs`
+### Compatibility and Style
+
+The parser code is intentionally written using **ECMAScript 3 (ES3) syntax** (var, prototypes, plain objects) for maximum portability and system compatibility.
+
+⚠️ **Note on Platform Dependency:** While the syntax is ES3, this module is built for and requires a **Node.js runtime** to function due to its reliance on system modules (`process`, `fs`).
+
+---
+
+### Installation
+
+```bash
+npm install envscan

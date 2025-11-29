@@ -13,7 +13,7 @@ var process    = require('node:process');
 var fs         = require('fs');
 var path       = require('path');
 
-var EnvScanner = require('../lib/index.cjs')
+var EnvParser = require('../lib/index.cjs')
 
 /**
  * Synchronously reads the file through {readFileSync}
@@ -57,7 +57,7 @@ nodeTest.test('Test .env2 parsing', function (t) {
     return;
   }
 
-  var tokenizer = new EnvScanner(buffer)
+  var tokenizer = new EnvParser(buffer)
 
   var env = tokenizer.tokenize()
   console.debug('Config =', env)
@@ -82,7 +82,7 @@ nodeTest.test('Test .env parsing', function (t) {
     return;
   }
 
-  var tokenizer = new EnvScanner(buffer)
+  var tokenizer = new EnvParser(buffer)
 
   var env = tokenizer.tokenize()
   console.debug('Config:', env)
