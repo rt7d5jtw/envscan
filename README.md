@@ -15,10 +15,3 @@ The parser includes support for:
 The parser code is intentionally written using **ECMAScript 3 (ES3) syntax** (var, prototypes, plain objects) for maximum portability and system compatibility.
 
 ⚠️ **Note on Platform Dependency:** While the syntax is ES3, this module is built for and requires a **Node.js runtime** to function due to its reliance on system modules (`process`, `fs`).
-
----
-
-### Installation
-
-```bash
-npm install envscan
