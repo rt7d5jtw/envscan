@@ -1,4 +1,4 @@
-# EnvParser: Environment File Parser (ES3 Compliant)
+# Environment File Parser (ES3 Compliant)
 
 ### About
 
