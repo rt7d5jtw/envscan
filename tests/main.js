@@ -13,7 +13,7 @@ var process    = require('node:process');
 var fs         = require('fs');
 var path       = require('path');
 
-var EnvParser = require('../lib/index.cjs')
+var EnvParser = require('../lib/index.js')
 
 /**
  * Synchronously reads the file through {readFileSync}
@@ -48,7 +48,7 @@ function loadFile(filePath, flag, enc) {
 }
 
 nodeTest.test('Test .env2 parsing', function (t) {
-  var result = loadFile('.env2');
+  var result = loadFile('tests/.env2');
   var buffer = result.buffer
   var err = result.err
 
@@ -74,7 +74,7 @@ nodeTest.test('Test .env2 parsing', function (t) {
 })
 
 nodeTest.test('Test .env parsing', function (t) {
-  var result = loadFile('.env');
+  var result = loadFile('tests/.env');
   var buffer = result.buffer
   var err    = result.err
 
