@@ -20,7 +20,7 @@ The parser code is intentionally written using **ECMAScript 3 (ES3) syntax** (va
 var EnvParser = require('./lib/index.js');
 var tokenizer = new EnvParser(fileBuffer);
 
-// Inject the host environment (Node.js example)
+// Add the host environment (Node.js example)
 tokenizer.setEnvironmentalVariables(process.env);
 
 var config = tokenizer.tokenize();
