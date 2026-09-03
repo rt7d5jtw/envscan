@@ -1,6 +1,0 @@
-{
-  "ecmaVersion": "es3",
-  "module": false,
-  "files": "./lib/**/*.cjs",
-  "not": ["node_modules/**/*"]
-}
