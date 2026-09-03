@@ -12,6 +12,16 @@ The parser includes support for:
 
 ### Compatibility and Style
 
-The parser code is intentionally written using **ECMAScript 3 (ES3) syntax** (var, prototypes, plain objects) for maximum portability and system compatibility.
+The parser code is intentionally written using **ECMAScript 3 (ES3) syntax** (var, prototypes, plain objects) and wrapped in a Universal Module Definition (UMD) to attempt to guarantee portability across modern Node.js environments, web browsers, and legacy JavaScript engines like SpiderMonkey and Rhino.
 
-⚠️ **Note on Platform Dependency:** While the syntax is ES3, this module is built for and requires a **Node.js runtime** to function due to its reliance on system modules (`process`, `fs`).
+⚠️ **Injecting Environment Variables:** Because this module attemtps to be platform-agnostic, it does not automatically read system environment variables. To enable variable expansion using the host's environment, you must manually inject them before parsing:
+
+```javascript
+var EnvParser = require('./lib/index.js');
+var tokenizer = new EnvParser(fileBuffer);
+
+// Inject the host environment (Node.js example)
+tokenizer.setEnvironmentalVariables(process.env);
+
+var config = tokenizer.tokenize();
+```
