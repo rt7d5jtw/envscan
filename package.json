@@ -3,32 +3,12 @@
   "version": "1.0.0",
   "description": "scans the env file",
   "main": "lib/index.js",
+  "license": "MIT",
   "scripts": {
     "test": "node tests/main.js",
     "test-inspect": "node --inspect tests/main.js",
     "test-node": "node --inspect-brk tests/main.js",
     "clean": "rm -rvf node_modules",
-    "tags": "ctags -R --exclude=.git --exclude='node_modules' --languages=JavaScript -f tags .",
-    "jshint": "jshint lib",
-    "escheck": "es-check es3 './lib/**/*.js' --not 'node_modules/**/*'"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "es-check": "file:vendor/es-check-9.6.4.tgz",
-    "jshint": "file:vendor/jshint-2.13.6.tgz"
-  },
-  "jshintConfig": {
-    "esversion": 3,
-    "node": true,
-    "boss": true,
-    "eqeqeq": true,
-    "strict": false,
-    "newcap": false,
-    "undef": true,
-    "unused": true,
-    "onecase": true,
-    "lastsemic": true,
-    "plusplus": false,
-    "multistr": true
+    "es3check": "node tests/es3check.js"
   }
 }
