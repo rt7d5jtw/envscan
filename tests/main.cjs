@@ -58,6 +58,7 @@ nodeTest.test('Test .env2 parsing', function (t) {
   }
 
   var tokenizer = new EnvParser(buffer)
+  tokenizer.setEnvironmentalVariables(process.env);
 
   var env = tokenizer.tokenize()
   console.debug('Config =', env)
@@ -83,6 +84,7 @@ nodeTest.test('Test .env parsing', function (t) {
   }
 
   var tokenizer = new EnvParser(buffer)
+  tokenizer.setEnvironmentalVariables(process.env);
 
   var env = tokenizer.tokenize()
   console.debug('Config:', env)
