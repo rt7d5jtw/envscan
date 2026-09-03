@@ -8,7 +8,6 @@
     "test": "node tests/main.js",
     "test-inspect": "node --inspect tests/main.js",
     "test-node": "node --inspect-brk tests/main.js",
-    "clean": "rm -rvf node_modules",
     "es3check": "node tests/es3check.js"
   }
 }
