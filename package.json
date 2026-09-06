@@ -5,9 +5,9 @@
   "main": "lib/index.js",
   "license": "MIT",
   "scripts": {
-    "test": "node tests/main.js",
-    "test-inspect": "node --inspect tests/main.js",
-    "test-node": "node --inspect-brk tests/main.js",
+    "test": "node tests/nodejs_test.js",
+    "test-inspect": "node --inspect tests/nodejs_test.js",
+    "test-node": "node --inspect-brk tests/nodejs_test.js",
     "es3check": "node tests/es3check.js"
   }
 }
