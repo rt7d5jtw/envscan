@@ -8,25 +8,68 @@
  *
  * It MUST be run in a Node.js environment to work properly.
  */
+
+var colors = {
+  reset: "\x1b[0m",
+  green: "\x1b[32m",
+  red: "\x1b[31m",
+  yellow: "\x1b[33m",
+  cyan: "\x1b[36m"
+};
+
+var testResults = {
+  passed: 0,
+  failed: 0,
+  errors: []
+}
+
 var testrunner = null;
 try {
   var testrunner = require('node:test');
 } catch (err) {
-  console.warn("node:test module not found");
+  console.warn(colors.yellow + "Warning: " + colors.reset + "node:test module not found. Using fallback.");
+
+  testrunner = {
+    test: function (testTitle, testFunction) {
+      var start = new Date().getTime();
+      try {
+        testFunction();
+        var end = new Date().getTime();
+        console.log(colors.green + "[TEST PASSED] " + colors.reset + testTitle + " (" + (end - start) + "ms)");
+      } catch (err) {
+        var end = new Date().getTime();
+        testResults.failed += 1;
+        testResults.errors[testResults.errors.length] = testTitle + " -> " + err.message;
+        console.log(colors.red + "[TEST FAILED] " + colors.reset + testTitle + " (" + (end - start) + "ms)");
+      }
+    }
+  }
 }
 
 var assert = null;
 try {
   var assert = require('node:assert');
 } catch (err) {
-  console.warn("node:assert module not found");
+  console.warn(colors.yellow + "Warning: " + colors.reset + "node:assert module not found. using fallback.");
+
+  assert = {
+    ok: function (condition, message) {
+      if (!condition) {
+        throw new Error(message || "Assertion failed: expected truthy value.");
+      }
+    }
+  }
 }
 
 var process = null;
 try {
   process = require('node:process');
 } catch (err) {
-  console.warn("node:process module not found");
+  console.warn(colors.yellow + "Warning: " + colors.reset + "node:process module not found. Using fallback.");
+
+  process = {
+    env: {}
+  }
 }
 
 var fs   = require('fs');
@@ -51,7 +94,7 @@ function loadFile(filePath, flag, enc) {
   var err = null;
 
   try {
-    var resolvedFilePath = path.resolve(process.cwd(), filePath);
+    var resolvedFilePath = path.resolve(__dirname, '..', filePath);
 
     buffer = fs.readFileSync(resolvedFilePath, {
       encoding: enc,
@@ -69,6 +112,8 @@ function loadFile(filePath, flag, enc) {
   };
 }
 
+console.log();
+
 testrunner.test('Test .env parsing', function (t) {
   var result = loadFile('tests/.env');
   var buffer = result.buffer
@@ -83,7 +128,7 @@ testrunner.test('Test .env parsing', function (t) {
   tokenizer.setEnvironmentalVariables(process.env);
 
   var env = tokenizer.tokenize()
-  console.debug('Config:', env)
+  //console.log('Config:', env)
 
   assert.ok(
     env['DB_PORT']        === '5432' &&
@@ -109,7 +154,7 @@ testrunner.test('Test .env2 parsing', function (t) {
   tokenizer.setEnvironmentalVariables(process.env);
 
   var env = tokenizer.tokenize()
-  console.debug('Config =', env)
+  //console.log('Config =', env)
 
   assert.ok(
     env['USER']        === 'testuser'           &&
@@ -121,7 +166,7 @@ testrunner.test('Test .env2 parsing', function (t) {
   )
 })
 
-testrunner.test('Test .env3 parsing [INVALID ENV FILE]', function (t) {
+testrunner.test('Test .env3 parsing [MALFORMED ENV FILE TEST]', function (t) {
   var result = loadFile('tests/.env3');
   var buffer = result.buffer
   var err    = result.err

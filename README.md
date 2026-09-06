@@ -28,6 +28,8 @@ var env = tokenizer.tokenize();
 
 ### Tested on
 
+Tested to work on NodeJS v0.12.0.
+
 Successfully tested on Windows XP SP3 (via QEMU VM) using Internet Explorer 6.0 (JScript 5.6) and Mozilla Firefox 2.0 (SpiderMonkey).
 
 ![Passing tests in Internet Explorer 6 on Windows XP](assets/envparser-working-on-ie6.png)
