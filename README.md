@@ -2,7 +2,7 @@
 
 ### About
 
-EnvParser is a utility designed to **parse environment variable (`.env`) files**. It reads key-value pairs and stores them in a standard **JavaScript Object**.
+EnvParser is a ES3 compatible environment file parser for loading environment variables from an `.env` file into the JavaScript program. It reads key-value pairs and stores them in a standard **JavaScript Object**.
 
 The parser includes support for:
 
@@ -14,7 +14,7 @@ The parser includes support for:
 
 The parser code is intentionally written using **ECMAScript 3 (ES3) syntax** (var, prototypes, plain objects) and wrapped in a Universal Module Definition (UMD) to attempt to guarantee portability across modern Node.js environments, web browsers, and legacy JavaScript engines like SpiderMonkey and Rhino.
 
-⚠️ **Injecting Environment Variables:** Because this module attemtps to be platform-agnostic, it does not automatically read system environment variables. This is used for interpolated strings from the existing host environment variables. To enable variable expansion using the host's environment, you must manually add them before parsing:
+⚠️ **Loading Environment Host Variables:** Because this module attemtps to be platform-agnostic, it does not automatically read system environment variables. This is used for interpolated strings from the existing host environment variables. To enable variable expansion using the host's environment, you must manually add them before parsing:
 
 ```javascript
 var EnvParser = require('./lib/index.js');
