@@ -7,7 +7,6 @@
   "scripts": {
     "test": "node tests/nodejs_test.js",
     "test-inspect": "node --inspect tests/nodejs_test.js",
-    "test-node": "node --inspect-brk tests/nodejs_test.js",
-    "es3check": "node tests/es3check.js"
+    "test-node": "node --inspect-brk tests/nodejs_test.js"
   }
 }

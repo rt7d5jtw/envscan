@@ -25,7 +25,8 @@ function log(message)
     var outputElement = document.getElementById("test-output");
     if (outputElement)
     {
-      outputElement.innerHTML += message + "\n";
+      var htmlMessage = message.replace(/\n/g, "<br>");
+      outputElement.innerHTML += htmlMessage + "\n";
     }
   }
   else if (typeof WScript !== "undefined")
@@ -67,6 +68,29 @@ function serializeObject(object) {
   return buffer
 }
 
+function getJavaScriptEngineInfo() {
+  if (typeof ScriptEngine === "function")
+  {
+    return ScriptEngine() + " " + ScriptEngineMajorVersion() + "." + ScriptEngineMinorVersion();
+  }
+  if (typeof process !== "undefined" && process.versions && process.versions.node)
+  {
+    return "Node V8 (v" + process.versions.node + ")";
+  }
+  if (typeof navigator !== "undefined" && navigator.userAgent)
+  {
+    var userAgent = navigator.userAgent;
+    var firefox = userAgent.match(/Firefox\/([0-9.]+)/);
+    if (firefox) {
+      return "SpiderMonkey (Firefox " + firefox[1] + ")";
+    }
+
+    return "Web Browser (" + navigator.appName + ")";
+  }
+
+  return "Unknown JavaScript Engine";
+}
+
 var Parser;
 var envfile = "USER=testuser\nDOMAIN=example.org\nADMIN_EMAIL=admin@example.org\nROOT_URL=example.org/app\nSOME_URL=SOMEVARIABLE/cache\nTEST_URL=testuser/data";
 
@@ -106,7 +130,8 @@ else if (testResults.failed === 0)
   log("--- Environment Variables ---")
   var serializedEnvFile = serializeObject(env);
   log(serializedEnvFile);
-  msg += "\n--- Environment file successfully parsed ---";
+  msg += "\n--- Environment file successfully parsed ---\n";
+  msg += "Powered by: " + getJavaScriptEngineInfo();
 }
 
 log(msg);
