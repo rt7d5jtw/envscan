@@ -1,0 +1,10 @@
+# Valid example
+PORT=8080
+
+# INVALID: Missing the "=" character
+DATABASE_USER root
+DATABASE_PASSWORD supersecret
+API_KEY 12345abcde
+
+# INVALID: Just a key with no equals sign or value
+DEBUG_MODE

@@ -63,7 +63,7 @@ function loadFile(filePath, flag, enc) {
     return { buffer: buffer, err: err };
   }
 
-  return { 
+  return {
     buffer: buffer,
     err: err
   };
