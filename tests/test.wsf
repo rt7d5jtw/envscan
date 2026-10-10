@@ -1,0 +1,6 @@
+<!-- Windows Script test for Windows XP -->
+<!-- C:\Windows\System32\cscript.exe //nologo test.wsf -->
+<job id="TestEnvParser">
+    <script language="JScript" src="..\lib\index.js" />
+    <script language="JScript" src="test.js" />
+</job>
